@@ -1,13 +1,56 @@
 #flying_bee.col.s12.card.height_600.waves-block.waves-light.gray_border.z-depth-5
   - @game.bees.each_with_index do |b, i|
-    %span.flying_bee{id: "div_#{i}"}
+    %span.flying_bee{id: "div_#{i}", name: "#{b.id}", class: "#{(b.progressbar(b.category) < 0.0) ? 'hidden' : ''}"}
       = image_tag("#{b.category}bee.gif", style: 'width: 80px')
+      %b.green-text
       .progress{style: 'width: 80px'}
-        .determinate{:style => "width: #{b.progressbar(b.category)}%"}
+        .determinate{style: "width: #{b.progressbar(b.category)}%", id: "prog_#{b.id}"}
+
 :javascript
 
   $(function(){
 
+    function win(){
+      $('.flying_bee').css("display", "none")
+      swal({
+        title: "Do you want to play again ?",
+        text: "You are a hero..play flying bee again!",
+        type: "success",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, play it again!",
+        cancelButtonText: "No, I am Busy!",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      },
+      function(isConfirm){
+        if (isConfirm) {
+          swal("We are rebuilding", "Please wait...", "success");
+          $.get("/rebuild/#{@game.id}", function(data, status, content){
+            document.location.href = "/flying_bee/#{@game.id}"
+          })
+        } else {
+          document.location.href = "/"
+        }
+      });
+    }
+    $(".flying_bee").click(function(){
+      var id = this.getAttribute('name')
+      var attr_id = this.id
+      $.get("/game/#{@game.id}/hitme/"+id, function(data, status, content){
+        $("#"+data.id).css("width", data.progress)
+        if(data.is_queen_died == true){
+          console.log("all died")
+          win()
+        }
+        if(data.is_died == true){
+          $("#"+attr_id).css("display", "none")
+        }
+        if(data.is_all_died == true){
+          win()
+        }
+      });
+    });
     function pagestart(){
       div_0=new Chip("div_0",47,68);
       div_1=new Chip("div_1",47,68);
