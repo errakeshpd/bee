@@ -1,9 +1,9 @@
 #flying_bee.col.s12.card.height_600.waves-block.waves-light.gray_border.z-depth-5
   - @game.bees.each_with_index do |b, i|
-    %span.custom{style: "position:absolute; left: -500px; width:47; height:68;cursor: url('http://modblackmoon.com/cursors/MB-MetalReligion_th.png') !important;", id: "div_#{i}"}
+    %span.flying_bee{id: "div_#{i}"}
       = image_tag("#{b.category}bee.gif", style: 'width: 80px')
       .progress{style: 'width: 80px'}
-        .determinate{:style => "width: 100%"}
+        .determinate{:style => "width: #{b.progressbar(b.category)}%"}
 :javascript
 
   $(function(){
