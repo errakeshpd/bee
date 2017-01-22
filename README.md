@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+step 1. Clone the repo
 
-Things you may want to cover:
+step 2. rvm use ruby-2.3.3
 
-* Ruby version
+step 3. bundle install
 
-* System dependencies
+step 4. rake db:create
 
-* Configuration
+step 5. rake db:migrate
 
-* Database creation
+step 6. rake db:seed
 
-* Database initialization
+step 7. rails s
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+DB: sqlite.
