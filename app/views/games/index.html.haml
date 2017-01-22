@@ -5,7 +5,7 @@
     .row
       .col-md-6
         %h1.header.center.orange-text
-          = image_tag('3D-Bee1.png', width: '80px')
+          = image_tag('3D-Bee1.png', width: '180px')
           %b.green-text
             Flying
           %span.red-text
@@ -13,6 +13,12 @@
     .row.center
       %h5.header.col.s12.light You can't win
     .row.center
+
       %a.btn-large.waves-effect.waves-light.orange{:href => "#"} Get Started
     %br/
     %br/
+:javascript
+  $(function(){
+    $('body').css('background-color', 'black');
+    $.firefly();
+  })
