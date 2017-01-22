@@ -5,7 +5,7 @@ class GamesController < ApplicationController
 
   def play
     @game = Game.new(game_params)
-    if @game.save
+    if @game.save && @game.build_flying_bee
       redirect_to flying_bee_path(@game)
     else
       redirect_to :back

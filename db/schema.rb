@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122090016) do
+ActiveRecord::Schema.define(version: 20170122125148) do
 
   create_table "bees", force: :cascade do |t|
-    t.integer  "type"
+    t.integer  "category"
     t.integer  "lifespan"
     t.integer  "game_id"
     t.datetime "created_at", null: false
