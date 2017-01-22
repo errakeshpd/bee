@@ -11,10 +11,23 @@
           %span.red-text
             Bee
     .row.center
-      %h5.header.col.s12.light You can't win
-    .row.center
+      = form_for @game, url: '/play' do |f|
+        - if @game.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@game.errors.count, "error")} prohibited this game from being saved:"
+            %ul
+              - @game.errors.full_messages.each do |msg|
+                %li= msg
+        .input-field.col.s12
+          = f.text_field :name, required: :true, style: 'color: red; font-size: 32px; text-align: center'
+          %label{:for => "name"} Name
 
-      %a.btn-large.waves-effect.waves-light.orange{:href => "#"} Get Started
+        .col.s12
+          %h5.header.col.s12.light You can't win
+        .col.s12
+          = f.submit 'Get Started', class: 'btn btn-large waves-effect waves-light orange'
+
+
     %br/
     %br/
 :javascript
