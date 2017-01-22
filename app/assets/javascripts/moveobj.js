@@ -66,6 +66,6 @@ document.getElementById(chip.named).style.left=chip.xx+"px";
 document.getElementById(chip.named).style.top=chip.yy+"px";
 
 
-chip.timer1=setTimeout("movechip('"+chip.named+"')",100);
+chip.timer1=setTimeout("movechip('"+chip.named+"')",5);
 }
 }
