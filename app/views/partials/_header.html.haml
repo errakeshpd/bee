@@ -1,0 +1,20 @@
+%nav.light-blue.lighten-1{:role => "navigation"}
+  .nav-wrapper.container
+    %a#logo-container.brand-logo{:href => "/"}
+      = image_tag('3D-Bee1.png', width: '40px')
+      %b.white-text
+        Flying
+      %span.red-text
+        Bee
+    %ul.right.hide-on-med-and-down
+      %li
+        %a{:href => "https://github.com/errakeshpd"}
+          %b
+            Its for FuN
+    %ul#nav-mobile.side-nav
+      %li
+        %a{:href => "https://github.com/errakeshpd"}
+          %b
+            Its for FuN
+    %a.button-collapse{"data-activates" => "nav-mobile", :href => "#"}
+      %i.material-icons menu

@@ -10,5 +10,6 @@
     %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"}
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
-    = render 'partials/header' |
-      <%= yield                |
+    = render partial: 'partials/header'
+    .container
+      = yield
