@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root '/welcome' => 'games#index'
+  root 'games#index'
 end
