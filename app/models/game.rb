@@ -19,4 +19,10 @@ class Game < ApplicationRecord
       end
     end
   end
+
+  def re_build_flying_bee
+    bees.each do |b|
+      b.update(lifespan: Bee.life_span(b.category))
+    end
+  end
 end
