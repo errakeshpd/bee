@@ -1,3 +1,49 @@
 #flying_bee.col.s12.card.height_600.waves-block.waves-light.gray_border.z-depth-5
-  - @game.bees.each do |b|
-    = image_tag("#{b.category}bee.gif", style: 'width: 80px')
+  - @game.bees.each_with_index do |b, i|
+    %span{style: "position:absolute; left: -500px; width:47; height:68;", id: "div_#{i}"}
+      = image_tag("#{b.category}bee.gif", style: 'width: 80px')
+      .progress{style: 'width: 80px'}
+        .determinate{:style => "width: 100%"}
+:javascript
+
+  $(function(){
+
+    function pagestart(){
+      div_0=new Chip("div_0",47,68);
+      div_1=new Chip("div_1",47,68);
+      div_2=new Chip("div_2",47,68);
+      div_3=new Chip("div_3",47,68);
+      div_4=new Chip("div_4",47,68);
+      div_5=new Chip("div_5",47,68);
+      div_6=new Chip("div_6",47,68);
+      div_7=new Chip("div_7",47,68);
+      div_8=new Chip("div_8",47,68);
+      div_9=new Chip("div_9",47,68);
+      div_10=new Chip("div_10",47,68);
+      div_11=new Chip("div_11",47,68);
+      div_12=new Chip("div_12",47,68);
+      div_13=new Chip("div_13",47,68);
+      movechip("div_0");
+      movechip("div_1");
+      movechip("div_2");
+      movechip("div_3");
+      movechip("div_4");
+      movechip("div_5");
+      movechip("div_6");
+      movechip("div_7");
+      movechip("div_8");
+      movechip("div_9");
+      movechip("div_10");
+      movechip("div_11");
+      movechip("div_12");
+      movechip("div_13");
+
+    }
+
+    if (window.addEventListener)
+    window.addEventListener("load", pagestart, false)
+    else if (window.attachEvent)
+    window.attachEvent("onload", pagestart)
+    else if (document.getElementById)
+    window.onload=pagestart
+  });
